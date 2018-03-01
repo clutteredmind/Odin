@@ -1,0 +1,21 @@
+{
+  "name": "odin",
+  "version": "0.0.1",
+  "description": "A Discord bot",
+  "main": "odin-bot.js",
+  "scripts": {
+    "monitor": "nodemon odin-bot.js",
+    "start": "node odin-bot.js",
+    "test": "mocha"
+  },
+  "author": "ClutteredMind",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.3.0",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.0.1"
+  }
+}
