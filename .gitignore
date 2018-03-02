@@ -3,3 +3,6 @@
 
 # token file
 auth.json
+
+# log file directory
+/log
