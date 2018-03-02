@@ -10,4 +10,4 @@
 const bot = require('./discord-client')();
 
 // log in
-//bot.login(require('./auth.json').token);
+bot.login(require('./auth.json').token);
