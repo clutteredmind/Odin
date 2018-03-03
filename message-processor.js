@@ -34,6 +34,8 @@ const processDiscordMessage = (discordMessage) => {
                 messageType = MessageTypes.FiteMe;
             } else if(messageContent.startsWith('insult') && discordMessage.mentions.users.array().length == 1) {
                 messageType = MessageTypes.Insult;
+            } else if(messageContent.startsWith('brawl!') && (discordMessage.mentions.users.array().length > 1 || discordMessage.mentions.everyone)) {
+                messageType = MessageTypes.Brawl;
             }
 
         } catch (error) {

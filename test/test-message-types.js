@@ -104,7 +104,6 @@ describe('MessageTypes tests', () => {
         expect(MessageTypes.Brawl).to.have.property('response');
         expect(MessageTypes.Brawl.response).to.be.a('function');
         expect(MessageTypes.Brawl).to.have.property('files');
-        expect(MessageTypes.Brawl.response()).to.be.undefined;
         done();
     });
 

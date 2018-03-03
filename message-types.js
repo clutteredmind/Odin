@@ -49,7 +49,20 @@ const MessageTypes = {
         files: []
     },
     Brawl: {
-        response: () => {},
+        response: (mentions) => {
+            let response = '';
+
+            if (mentions.everyone) {
+                response = 'Everyone? Really?';
+            } else {
+                response = 'A huge brawl has broken out!\n';
+                let winner = odinUtil.getRandomInt(mentions.users.array().length - 1);
+                response += mentions.users.array()[winner].toString();
+                response += ' has emerged victorious!';
+            }
+
+            return response;
+        },
         files: []
     },
     Insult: {

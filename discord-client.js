@@ -28,25 +28,36 @@ function makeBot() {
 
         // we want to catch anything that might go wrong so the bot doesn't crash
         try {
+            let responseString = undefined;
+            let fileList = [];
+
             switch (messageType) {
                 case MessageTypes.Help:
                 case MessageTypes.Ping:
                 case MessageTypes.Fail:
                 case MessageTypes.Frick:
-                    message.channel.send(messageType.response(), {
-                        files: messageType.files
-                    });
+                    responseString = messageType.response();
+                    fileList = messageType.files;
                     break;
                 case MessageTypes.FiteMe:
                 case MessageTypes.Insult:
-                    message.channel.send(messageType.response(message.mentions.users.first().toString(), message.author.username), {
-                        files: messageType.files
-                    });
+                    responseString = messageType.response(message.mentions.users.first().toString(), message.author.username);
+                    fileList = messageType.files;
+                    break;
+                case MessageTypes.Brawl:
+                    responseString = messageType.response(message.mentions);
+                    fileList = messageType.files;
                     break;
                 case MessageTypes.None:
                 default:
                     // do nothing by default or with messages of type None
                     break;
+            }
+
+            if (responseString != undefined) {
+                message.channel.send(responseString, {
+                    files: fileList
+                });
             }
         } catch (error) {
             // log all errors
