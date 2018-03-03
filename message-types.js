@@ -27,7 +27,7 @@ const MessageTypes = {
         response: () => {
             return 'u tried :(';
         },
-        files: ['images/u_tried.png']
+        files: ['images/fail/u_tried.png']
     },
     Mock: {
         response: () => {},
