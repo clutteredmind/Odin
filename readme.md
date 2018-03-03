@@ -2,7 +2,7 @@
 
 A Discord bot
 
-The bot response to the following commands:<br />
+The bot responds to the following commands:<br />
 
 'bot help' - The thing you just said. Tells you everything I can do.<br />
 'ping' - Pretty boring, just used to verify that the bot is working.<br />
