@@ -12,13 +12,16 @@ const logger = require('./logger');
 // message types enum
 const MessageTypes = require('./message-types');
 
+// look through the incoming message to see if it's something we need to respond to
 const processDiscordMessage = (discordMessage) => {
     var messageType = MessageTypes.None;
     // only deal with the message if it's an object (with minimal object type validation)
     if (Object.prototype.toString.call(discordMessage) === '[object Object]' && discordMessage.content != undefined) {
         // we want to catch anything that might go wrong so the bot doesn't crash
         try {
+            // extract the message's text
             var messageContent = discordMessage.content.toLowerCase();
+
             if (messageContent === 'bot help') {
                 messageType = MessageTypes.Help;
             } else if (messageContent === 'ping') {
@@ -27,9 +30,12 @@ const processDiscordMessage = (discordMessage) => {
                 messageType = MessageTypes.Fail;
             } else if (messageContent.includes('frick')) {
                 messageType = MessageTypes.Frick;
-            } else if (messageContent.includes('fite me') && discordMessage.mentions.users.array().length == 1) {
+            } else if (messageContent.startsWith('fite me') && discordMessage.mentions.users.array().length == 1) {
                 messageType = MessageTypes.FiteMe;
+            } else if(messageContent.startsWith('insult') && discordMessage.mentions.users.array().length == 1) {
+                messageType = MessageTypes.Insult;
             }
+
         } catch (error) {
             // log all errors
             logger.log('error', `An error occurred in the message processor: ${error.message}`);

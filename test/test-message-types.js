@@ -113,7 +113,7 @@ describe('MessageTypes tests', () => {
         expect(MessageTypes.Insult).to.have.property('response');
         expect(MessageTypes.Insult.response).to.be.a('function');
         expect(MessageTypes.Insult).to.have.property('files');
-        expect(MessageTypes.Insult.response()).to.be.undefined;
+        expect(MessageTypes.Insult.response()).to.be.a('string');
         done();
     });
 

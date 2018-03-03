@@ -38,9 +38,10 @@ function makeBot() {
                     });
                     break;
                 case MessageTypes.FiteMe:
+                case MessageTypes.Insult:
                     message.channel.send(messageType.response(message.mentions.users.first().toString(), message.author.username), {
                         files: messageType.files
-                    })
+                    });
                     break;
                 case MessageTypes.None:
                 default:
