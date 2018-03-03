@@ -48,6 +48,10 @@ function makeBot() {
                     responseString = messageType.response(message.mentions);
                     fileList = messageType.files;
                     break;
+                case MessageTypes.Hug:
+                    responseString = messageType.response(message.mentions.users.first().toString());
+                    fileList = messageType.files;
+                    break;
                 case MessageTypes.None:
                 default:
                     // do nothing by default or with messages of type None

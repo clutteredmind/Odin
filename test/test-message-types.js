@@ -121,7 +121,7 @@ describe('MessageTypes tests', () => {
         expect(MessageTypes.Hug).to.have.property('response');
         expect(MessageTypes.Hug.response).to.be.a('function');
         expect(MessageTypes.Hug).to.have.property('files');
-        expect(MessageTypes.Hug.response()).to.be.undefined;
+        expect(MessageTypes.Hug.response()).to.be.a('string');
         done();
     });
 });

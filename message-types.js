@@ -6,6 +6,9 @@
 
 'use strict';
 
+const fs = require('fs');
+const path = require('path');
+
 const odinUtil = require('./odin-util');
 
 const insults = require('./insults');
@@ -81,17 +84,21 @@ const MessageTypes = {
         files: []
     },
     Hug: {
-        response: () => {},
-        files: []
+        response: (recipient) => {
+            return `Have a hug, ${recipient}`;
+        },
+        files: ['images/hugs/1.gif']
     },
     Help: {
         response: () => {
-            return "'bot help' - displays all available commands\n" +
-                "'ping' - Pretty boring, just used to verify the bot is working\n" +
-                "'fail' - Gives a fail award\n" +
-                "'f r i c k' - If any message contains this word (minus the spaces. I don't want to get kicked), you get banned\n" +
+            return "'bot help' - The thing you just said. Tells you everything I can do.\n" +
+                "'ping' - Pretty boring, just used to verify the bot is working.\n" +
+                "'fail' - Gives a fail award.\n" +
+                "'f r i c k' - If any message contains this word (Minus the spaces. I don't want to ban myself!), you get banned.\n" +
                 "'fite me <user mention>' - Starts a fight with someone. Be wary! You might lose!\n" +
-                "'insult <user mention>' - Hurl a devastating insult at someone. Really not very nice.";
+                "'insult <user mention>' - Hurl a devastating insult at someone. Really not very nice.\n" +
+                "'brawl <multiple user mentions>' - Starts a huge brawl with everyone mentioned. There can be only one survivor!\n" +
+                "'hug <user mention>' - Sends a virtual hug, targeted with laser-like precision.";
         },
         files: []
     }

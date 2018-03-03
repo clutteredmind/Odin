@@ -36,6 +36,8 @@ const processDiscordMessage = (discordMessage) => {
                 messageType = MessageTypes.Insult;
             } else if(messageContent.startsWith('brawl!') && (discordMessage.mentions.users.array().length > 1 || discordMessage.mentions.everyone)) {
                 messageType = MessageTypes.Brawl;
+            } else if (messageContent.startsWith('hug')) {
+                messageType = MessageTypes.Hug;
             }
 
         } catch (error) {

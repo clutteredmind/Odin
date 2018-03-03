@@ -63,7 +63,8 @@ const insults = {
         'freckle',
         'soldier',
         'kernel',
-        'shingle'
+        'shingle',
+        'embarrassment'
     ]
 }
 
