@@ -40,8 +40,7 @@ describe('MessageTypes tests', () => {
         expect(MessageTypes.None).to.not.be.undefined;
         expect(MessageTypes.None).to.have.property('response');
         expect(MessageTypes.None.response).to.be.a('function');
-        expect(MessageTypes.None).to.have.property('files');
-        expect(MessageTypes.None.response()).to.be.undefined;
+        expect(MessageTypes.None.response()).to.be.an('object');
         done();
     });
 
@@ -49,8 +48,9 @@ describe('MessageTypes tests', () => {
         expect(MessageTypes.Help).to.not.be.undefined;
         expect(MessageTypes.Help).to.have.property('response');
         expect(MessageTypes.Help.response).to.be.a('function');
-        expect(MessageTypes.Help).to.have.property('files');
-        expect(MessageTypes.Help.response()).to.be.a('string');
+        expect(MessageTypes.Help.response()).to.be.an('object');
+        expect(MessageTypes.Help.response()).to.have.property('message');
+        expect(MessageTypes.Help.response()).to.have.property('files');
         done();
     });
 
@@ -58,8 +58,10 @@ describe('MessageTypes tests', () => {
         expect(MessageTypes.Ping).to.not.be.undefined;
         expect(MessageTypes.Ping).to.have.property('response');
         expect(MessageTypes.Ping.response).to.be.a('function');
-        expect(MessageTypes.Ping).to.have.property('files');
-        expect(MessageTypes.Ping.response()).to.equal('pong');
+        expect(MessageTypes.Ping.response()).to.be.an('object');
+        expect(MessageTypes.Ping.response()).to.have.property('message');
+        expect(MessageTypes.Ping.response()).to.have.property('files');
+        expect(MessageTypes.Ping.response().message).to.equal('pong');
         done();
     });
 
@@ -67,8 +69,11 @@ describe('MessageTypes tests', () => {
         expect(MessageTypes.Fail).to.not.be.undefined;
         expect(MessageTypes.Fail).to.have.property('response');
         expect(MessageTypes.Fail.response).to.be.a('function');
-        expect(MessageTypes.Fail).to.have.property('files');
-        expect(MessageTypes.Fail.response()).to.equal('u tried :(');
+        expect(MessageTypes.Fail.response()).to.be.an('object');
+        expect(MessageTypes.Fail.response()).to.have.property('message');
+        expect(MessageTypes.Fail.response()).to.have.property('files');
+        expect(MessageTypes.Fail.response().message).to.equal('u tried :(');
+        expect(MessageTypes.Fail.response().files.length).to.equal(1);
         done();
     });
 
@@ -76,8 +81,9 @@ describe('MessageTypes tests', () => {
         expect(MessageTypes.Mock).to.not.be.undefined;
         expect(MessageTypes.Mock).to.have.property('response');
         expect(MessageTypes.Mock.response).to.be.a('function');
-        expect(MessageTypes.Mock).to.have.property('files');
-        expect(MessageTypes.Mock.response()).to.be.undefined;
+        expect(MessageTypes.Mock.response()).to.be.an('object');
+        expect(MessageTypes.Mock.response()).to.have.property('message');
+        expect(MessageTypes.Mock.response()).to.have.property('files');
         done();
     });
 
@@ -85,8 +91,10 @@ describe('MessageTypes tests', () => {
         expect(MessageTypes.Frick).to.not.be.undefined;
         expect(MessageTypes.Frick).to.have.property('response');
         expect(MessageTypes.Frick.response).to.be.a('function');
-        expect(MessageTypes.Frick).to.have.property('files');
-        expect(MessageTypes.Frick.response()).to.equal('B&');
+        expect(MessageTypes.Frick.response()).to.be.an('object');
+        expect(MessageTypes.Frick.response()).to.have.property('message');
+        expect(MessageTypes.Frick.response()).to.have.property('files');
+        expect(MessageTypes.Frick.response().message).to.equal('B&');
         done();
     });
 
@@ -94,8 +102,9 @@ describe('MessageTypes tests', () => {
         expect(MessageTypes.FiteMe).to.not.be.undefined;
         expect(MessageTypes.FiteMe).to.have.property('response');
         expect(MessageTypes.FiteMe.response).to.be.a('function');
-        expect(MessageTypes.FiteMe).to.have.property('files');
-        expect(MessageTypes.FiteMe.response()).to.be.a('string');
+        expect(MessageTypes.FiteMe.response()).to.be.an('object');
+        expect(MessageTypes.FiteMe.response()).to.have.property('message');
+        expect(MessageTypes.FiteMe.response()).to.have.property('files');
         done();
     });
 
@@ -103,7 +112,9 @@ describe('MessageTypes tests', () => {
         expect(MessageTypes.Brawl).to.not.be.undefined;
         expect(MessageTypes.Brawl).to.have.property('response');
         expect(MessageTypes.Brawl.response).to.be.a('function');
-        expect(MessageTypes.Brawl).to.have.property('files');
+        expect(MessageTypes.Brawl.response()).to.be.an('object');
+        expect(MessageTypes.Brawl.response()).to.have.property('message');
+        expect(MessageTypes.Brawl.response()).to.have.property('files');
         done();
     });
 
@@ -111,8 +122,9 @@ describe('MessageTypes tests', () => {
         expect(MessageTypes.Insult).to.not.be.undefined;
         expect(MessageTypes.Insult).to.have.property('response');
         expect(MessageTypes.Insult.response).to.be.a('function');
-        expect(MessageTypes.Insult).to.have.property('files');
-        expect(MessageTypes.Insult.response()).to.be.a('string');
+        expect(MessageTypes.Insult.response()).to.be.an('object');
+        expect(MessageTypes.Insult.response()).to.have.property('message');
+        expect(MessageTypes.Insult.response()).to.have.property('files');
         done();
     });
 
@@ -120,8 +132,9 @@ describe('MessageTypes tests', () => {
         expect(MessageTypes.Hug).to.not.be.undefined;
         expect(MessageTypes.Hug).to.have.property('response');
         expect(MessageTypes.Hug.response).to.be.a('function');
-        expect(MessageTypes.Hug).to.have.property('files');
-        expect(MessageTypes.Hug.response()).to.be.a('string');
+        expect(MessageTypes.Hug.response()).to.be.an('object');
+        expect(MessageTypes.Hug.response()).to.have.property('message');
+        expect(MessageTypes.Hug.response()).to.have.property('files');
         done();
     });
 });

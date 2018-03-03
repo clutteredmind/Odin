@@ -30,27 +30,32 @@ function makeBot() {
         try {
             let responseString = undefined;
             let fileList = [];
+            let result = {};
 
             switch (messageType) {
                 case MessageTypes.Help:
                 case MessageTypes.Ping:
                 case MessageTypes.Fail:
                 case MessageTypes.Frick:
-                    responseString = messageType.response();
-                    fileList = messageType.files;
+                    result = messageType.response();
+                    responseString = result.message;
+                    fileList = result.files;
                     break;
                 case MessageTypes.FiteMe:
                 case MessageTypes.Insult:
-                    responseString = messageType.response(message.mentions.users.first().toString(), message.author.username);
-                    fileList = messageType.files;
+                    result = messageType.response(message.mentions.users.first().toString(), message.author.username);
+                    responseString = result.message;
+                    fileList = result.files;
                     break;
                 case MessageTypes.Brawl:
-                    responseString = messageType.response(message.mentions);
-                    fileList = messageType.files;
+                    result = messageType.response(message.mentions);
+                    responseString = result.message;
+                    fileList = result.files;
                     break;
                 case MessageTypes.Hug:
-                    responseString = messageType.response(message.mentions.users.first().toString());
-                    fileList = messageType.files;
+                    result = messageType.response(message.mentions.users.first().toString());
+                    responseString = result.message;
+                    fileList = result.files;
                     break;
                 case MessageTypes.None:
                 default:
