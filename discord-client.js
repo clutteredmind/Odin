@@ -8,10 +8,14 @@
 
 const logger = require('./logger');
 const Discord = require('discord.js');
+const MessageTypes = require('./message-types');
+const processDiscordMessage = require('./message-processor');
 
 function makeBot() {
     // create the bot
-    const bot = new Discord.Client({ disabledEvents: ['TYPING_START'] });
+    const bot = new Discord.Client({
+        disabledEvents: ['TYPING_START']
+    });
 
     // the bot is connected and ready to go
     bot.on('ready', () => {
@@ -25,8 +29,18 @@ function makeBot() {
         // we want to catch anything that might go wrong so the bot doesn't crash
         try {
             switch (messageType) {
+                case MessageTypes.Help:
                 case MessageTypes.Ping:
-                    message.channel.send(messageType.responseString);
+                case MessageTypes.Fail:
+                case MessageTypes.Frick:
+                    message.channel.send(messageType.response(), {
+                        files: messageType.files
+                    });
+                    break;
+                case MessageTypes.FiteMe:
+                    message.channel.send(messageType.response(message.mentions.users.first().toString(), message.author.username), {
+                        files: messageType.files
+                    })
                     break;
                 case MessageTypes.None:
                 default:
