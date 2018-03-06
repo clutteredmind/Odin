@@ -114,7 +114,7 @@ const MessageTypes = {
                 "'fail' - Gives a fail award.\n" +
                 "'f r i c k' - If any message contains this word (Minus the spaces. I don't want to ban myself!), you get banned.\n" +
                 "'fite me <user mention>' - Starts a fight with someone. Be wary! You might lose!\n" +
-                "'insult <user mention>' - Hurl a devastating insult at someone. Really not very nice.\n" +
+                "'insult <everyone | user mention(s)>' - Hurl a devastating insult at someone. Really not very nice.\n" +
                 "'brawl! <multiple user mentions>' - Starts a huge brawl with everyone mentioned. There can be only one survivor!\n" +
                 "'hug <user mention>' - Sends a virtual hug, targeted with laser-like precision.";
 
