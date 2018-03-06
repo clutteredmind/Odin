@@ -46,7 +46,7 @@ function makeBot() {
                     messageType.respond(message.mentions, message.channel);
                     break;
                 case MessageTypes.Hug:
-                    messageType.respond(message.mentions.users.first().toString(), message.channel);
+                    messageType.respond(message.mentions, message.channel);
                     break;
                 case MessageTypes.None:
                 default:

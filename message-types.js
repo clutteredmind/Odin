@@ -83,7 +83,7 @@ const MessageTypes = {
         }
     },
     Hug: {
-        respond: (recipient, channel) => {
+        respond: (mentions, channel) => {
             let hugFile = [];
             let hugFilePath = path.join(__dirname, 'images/hugs');
             let hugFiles = fs.readdirSync(hugFilePath);
@@ -91,7 +91,18 @@ const MessageTypes = {
                 hugFile.push(path.join(hugFilePath, hugFiles[Math.floor(Math.random() * hugFiles.length)]));
             }
 
-            channel.send(`Have a hug, ${recipient}`, {
+            let hugText = 'Have a hug, ';
+            if (mentions.everyone) {
+                hugText += 'everyone';
+            } else {
+                for(let user of mentions.users.array()) {
+                    hugText += user.toString() + ' ';
+                }
+            }
+
+            hugText = hugText.trim() + '!';
+
+            channel.send(hugText, {
                 files: hugFile
             });
         }
