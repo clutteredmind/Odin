@@ -28,45 +28,30 @@ function makeBot() {
 
         // we want to catch anything that might go wrong so the bot doesn't crash
         try {
-            let responseString = undefined;
-            let fileList = [];
-            let result = {};
-
             switch (messageType) {
                 case MessageTypes.Help:
                 case MessageTypes.Ping:
                 case MessageTypes.Fail:
                 case MessageTypes.Frick:
-                    result = messageType.response();
-                    responseString = result.message;
-                    fileList = result.files;
+                    messageType.respond(message.channel);
+                    break;
+                case MessageTypes.Mock:
+                    messageType.respond(message.content.substring(5).trim(), message.channel);
                     break;
                 case MessageTypes.FiteMe:
                 case MessageTypes.Insult:
-                    result = messageType.response(message.mentions.users.first().toString(), message.author.username);
-                    responseString = result.message;
-                    fileList = result.files;
+                    messageType.respond(message.mentions.users.first().toString(), message.author.username, message.channel);
                     break;
                 case MessageTypes.Brawl:
-                    result = messageType.response(message.mentions);
-                    responseString = result.message;
-                    fileList = result.files;
+                    messageType.respond(message.mentions, message.channel);
                     break;
                 case MessageTypes.Hug:
-                    result = messageType.response(message.mentions.users.first().toString());
-                    responseString = result.message;
-                    fileList = result.files;
+                    messageType.respond(message.mentions.users.first().toString(), message.channel);
                     break;
                 case MessageTypes.None:
                 default:
                     // do nothing by default or with messages of type None
                     break;
-            }
-
-            if (responseString != undefined) {
-                message.channel.send(responseString, {
-                    files: fileList
-                });
             }
         } catch (error) {
             // log all errors

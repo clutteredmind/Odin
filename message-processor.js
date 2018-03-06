@@ -38,8 +38,9 @@ const processDiscordMessage = (discordMessage) => {
                 messageType = MessageTypes.Brawl;
             } else if (messageContent.startsWith('hug')) {
                 messageType = MessageTypes.Hug;
+            } else if(messageContent.startsWith('mock')) {
+                messageType = MessageTypes.Mock;
             }
-
         } catch (error) {
             // log all errors
             logger.log('error', `An error occurred in the message processor: ${error.message}`);
