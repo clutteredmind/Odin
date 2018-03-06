@@ -8,7 +8,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const request = require('request-promise');
+const request = require('request');
 
 const odinUtil = require('./odin-util');
 
