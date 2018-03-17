@@ -40,10 +40,10 @@ function makeBot() {
                     break;
                 case MessageTypes.FiteMe:
                 case MessageTypes.Insult:
-                    messageType.respond(message.mentions.users.first().toString(), message.author.username, message.channel);
+                    messageType.respond(message.mentions.everyone ? 'everyone' : message.mentions.users.first().toString(), message.author.username, message.channel);
                     break;
                 case MessageTypes.Brawl:
-                    messageType.respond(message.mentions, message.channel);
+                    messageType.respond(message.author.username, message.mentions, message.channel);
                     break;
                 case MessageTypes.Hug:
                     messageType.respond(message.mentions, message.channel);

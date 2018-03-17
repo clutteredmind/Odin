@@ -51,14 +51,14 @@ const MessageTypes = {
         }
     },
     Brawl: {
-        respond: (mentions, channel) => {
+        respond: (belligerent, mentions, channel) => {
             let response = 'A huge brawl has broken out!\n';
 
             if (mentions != undefined) {
                 if (mentions.everyone) {
-                    response = 'Everyone? Really?';
+                    response = `${belligerent} foolishly tried to start a fight with everybody and it did not go well for them.`;
                 } else {
-                    let winner = odinUtil.getRandomInt(mentions.users.array().length - 1);
+                    let winner = odinUtil.getRandomInt(mentions.users.array().length);
                     response += mentions.users.array()[winner].toString();
                     response += ' has emerged victorious!';
                 }
@@ -70,7 +70,12 @@ const MessageTypes = {
     Insult: {
         respond: (target, bully, channel) => {
             let firstWord = insults.first[Math.floor(Math.random() * insults.first.length)];
-            let insultString = `Hey ${target}, ${bully} thinks you're `;
+            let insultString = `Hey ${target}, ${bully} thinks `;
+            if(target == 'everyone') {
+                insultString += 'each of you is ';
+            } else {
+                insultString += 'you\'re ';
+            }
             insultString += odinUtil.isVowel(firstWord[0]) ? 'an ' : 'a ';
             insultString += firstWord +
                 ' ' +
@@ -114,8 +119,8 @@ const MessageTypes = {
                 "'fail' - Gives a fail award.\n" +
                 "'f r i c k' - If any message contains this word (Minus the spaces. I don't want to ban myself!), you get banned.\n" +
                 "'fite me <user mention>' - Starts a fight with someone. Be wary! You might lose!\n" +
-                "'insult <everyone | user mention(s)>' - Hurl a devastating insult at someone. Really not very nice.\n" +
-                "'brawl! <multiple user mentions>' - Starts a huge brawl with everyone mentioned. There can be only one survivor!\n" +
+                "'insult <everyone | user mention>' - Hurl a devastating insult at someone. Really not very nice. (Please don't try to insult more than one person, I get confused after the first one.)\n" +
+                "'brawl! <everyone | multiple user mentions>' - Starts a huge brawl with everyone mentioned. There can be only one survivor!\n" +
                 "'hug <user mention>' - Sends a virtual hug, targeted with laser-like precision.";
 
             channel.send(helpText);
@@ -123,5 +128,5 @@ const MessageTypes = {
     }
 };
 
-// freeze the MessageTypes object so that it cannot be changed. this effectively makes it an enum
+// freeze the MessageTypes object so that it cannot be changed
 module.exports = Object.freeze(MessageTypes);

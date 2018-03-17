@@ -32,9 +32,9 @@ const processDiscordMessage = (discordMessage) => {
                 messageType = MessageTypes.Frick;
             } else if (messageContent.startsWith('fite me') && discordMessage.mentions.users.array().length == 1) {
                 messageType = MessageTypes.FiteMe;
-            } else if(messageContent.startsWith('insult') && discordMessage.mentions.users.array().length == 1) {
+            } else if(messageContent.startsWith('insult')) {
                 messageType = MessageTypes.Insult;
-            } else if(messageContent.startsWith('brawl!') && (discordMessage.mentions.users.array().length > 1 || discordMessage.mentions.everyone)) {
+            } else if(messageContent.startsWith('brawl!') && (discordMessage.mentions.users.array().length > 0 || discordMessage.mentions.everyone)) {
                 messageType = MessageTypes.Brawl;
             } else if (messageContent.startsWith('hug')) {
                 messageType = MessageTypes.Hug;
