@@ -115,7 +115,7 @@ const MessageTypes = {
     Help: {
         respond: (channel) => {
             let helpText = "'bot help' - The thing you just said. Tells you everything I can do.\n" +
-                "'ping' - Pretty boring, just used to verify that the bot is working.\n" +
+                "'ping' - Just used to verify that the bot is working. Pretty boring.\n" +
                 "'fail' - Gives a fail award.\n" +
                 "'f r i c k' - If any message contains this word (Minus the spaces. I don't want to ban myself!), you get banned.\n" +
                 "'fite me <user mention>' - Starts a fight with someone. Be wary! You might lose!\n" +
