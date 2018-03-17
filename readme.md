@@ -12,4 +12,4 @@ The bot responds to the following commands:<br />
 'insult [everyone | user mention]' - Hurl a devastating insult at someone. Really not very nice. (Please don't try to insult more than one person, I get confused after the first one.)<br />
 'brawl! [everyone | multiple user mentions]' - Starts a huge brawl with everyone mentioned. There can be only one survivor!<br />
 'hug [user mention]' - Sends a virtual hug, targeted with laser-like precision.<br />
-'hey bot [some question]?' - I have all the answers, just ask and I will guide you. (Don't forget the question mark. I will only answer properly-punctuated questions!)<br />
+'hey bot [some question]?' - I have all the answers, just ask and I will guide you. Yes or no questions are easiest for me, and don't forget the question mark. I will only answer properly-punctuated questions!<br />
