@@ -33,6 +33,7 @@ function makeBot() {
                 case MessageTypes.Ping:
                 case MessageTypes.Fail:
                 case MessageTypes.Frick:
+                case MessageTypes.Question:
                     messageType.respond(message.channel);
                     break;
                 case MessageTypes.Mock:

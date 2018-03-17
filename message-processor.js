@@ -40,6 +40,8 @@ const processDiscordMessage = (discordMessage) => {
                 messageType = MessageTypes.Hug;
             } else if(messageContent.startsWith('mock')) {
                 messageType = MessageTypes.Mock;
+            } else if(messageContent.startsWith('hey bot') && messageContent.endsWith('?')) {
+                messageType = MessageTypes.Question;
             }
         } catch (error) {
             // log all errors

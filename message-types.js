@@ -13,6 +13,7 @@ const request = require('request');
 const odinUtil = require('./odin-util');
 
 const insults = require('./insults');
+const answers = require('./answers').answers;
 
 const MessageTypes = {
     None: {
@@ -112,6 +113,12 @@ const MessageTypes = {
             });
         }
     },
+    Question: {
+        respond: (channel) => {
+            let answer = answers[Math.floor(Math.random() * answers.length)];
+            channel.send(answer);
+        }
+    },
     Help: {
         respond: (channel) => {
             let helpText = "'bot help' - The thing you just said. Tells you everything I can do.\n" +
@@ -121,7 +128,8 @@ const MessageTypes = {
                 "'fite me <user mention>' - Starts a fight with someone. Be wary! You might lose!\n" +
                 "'insult <everyone | user mention>' - Hurl a devastating insult at someone. Really not very nice. (Please don't try to insult more than one person, I get confused after the first one.)\n" +
                 "'brawl! <everyone | multiple user mentions>' - Starts a huge brawl with everyone mentioned. There can be only one survivor!\n" +
-                "'hug <user mention>' - Sends a virtual hug, targeted with laser-like precision.";
+                "'hug <user mention>' - Sends a virtual hug, targeted with laser-like precision.\n" +
+                "'hey bot <some question>?' - I have all the answers, just ask and I will guide you. (Don't forget the question mark. I will only answer properly-punctuated questions!)";
 
             channel.send(helpText);
         }
