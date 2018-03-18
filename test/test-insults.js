@@ -17,8 +17,15 @@ describe('insult object tests', () => {
         done();
     });
 
-    it('should have four properties', (done) => {
-        expect(Object.keys(insults).length).to.equal(4);
+    it('should have first, second, and third arrays', (done) => {
+        expect(insults.first).to.be.an('array');
+        expect(insults.second).to.be.an('array');
+        expect(insults.third).to.be.an('array');
+        done();
+    });
+
+    it('should have three properties', (done) => {
+        expect(Object.keys(insults).length).to.equal(3);
         done();
     });
 });

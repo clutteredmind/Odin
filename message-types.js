@@ -150,7 +150,8 @@ const MessageTypes = {
                 "'insult <everyone | user mention>' - Hurl a devastating insult at someone. Really not very nice. (Please don't try to insult more than one person, I get confused after the first one.)\n" +
                 "'brawl! <everyone | multiple user mentions>' - Starts a huge brawl with everyone mentioned. There can be only one survivor!\n" +
                 "'hug <user mention>' - Sends a virtual hug, targeted with laser-like precision.\n" +
-                "'hey bot <some question>?' - I have all the answers, just ask and I will guide you. Yes or no questions are easiest for me, and don't forget the question mark. I will only answer properly-punctuated questions!";
+                "'hey bot <some question>?' - I have all the answers, just ask and I will guide you. Yes or no questions are easiest for me, and don't forget the question mark. I will only answer properly-punctuated questions!\n" +
+                "'punch <user mention>' - Pow! Right in the kisser!";
             channel.send(helpText);
         }
     }
