@@ -29,17 +29,16 @@ describe('MessageTypes tests', () => {
         done();
     });
 
-    it('should have ten properties', (done) => {
-        // this test should be updated as keys are added to the enum
-        // this will help ensure that if the enum is changed, the tests will at least get looked at
-        expect(Object.keys(MessageTypes).length).to.equal(10);
+    it('should have twleve properties', (done) => {
+        // this test should be updated as keys are added to the object
+        // this will help ensure that if the object is changed, the tests will at least get looked at
+        expect(Object.keys(MessageTypes).length).to.equal(12);
         done();
     });
 
     it('should have a None property', (done) => {
         expect(MessageTypes.None).to.not.be.undefined;
-        expect(MessageTypes.None).to.have.property('respond');
-        expect(MessageTypes.None.respond).to.be.a('function');
+        expect(MessageTypes.None).to.be.empty;
         done();
     });
 
@@ -103,6 +102,20 @@ describe('MessageTypes tests', () => {
         expect(MessageTypes.Hug).to.not.be.undefined;
         expect(MessageTypes.Hug).to.have.property('respond');
         expect(MessageTypes.Hug.respond).to.be.a('function');
+        done();
+    });
+
+    it('should have a Question property', (done) => {
+        expect(MessageTypes.Question).to.not.be.undefined;
+        expect(MessageTypes.Question).to.have.property('respond');
+        expect(MessageTypes.Question.respond).to.be.a('function');
+        done();
+    });
+
+    it('should have a Punch property', (done) => {
+        expect(MessageTypes.Punch).to.not.be.undefined;
+        expect(MessageTypes.Punch).to.have.property('respond');
+        expect(MessageTypes.Punch.respond).to.be.a('function');
         done();
     });
 });

@@ -17,21 +17,8 @@ describe('insult object tests', () => {
         done();
     });
 
-    it('should be frozen', (done) => {
-        // change a property
-        expect(() => {
-            insults[0] = {}
-        }).to.throw('Cannot add property 0, object is not extensible');
-        // add a property
-        expect(() => {
-            insults['NonexistentInsult'] = {}
-        }).to.throw('Cannot add property NonexistentInsult, object is not extensible');
-        done();
-    });
-
-    it('should have three properties', (done) => {
-        // all insults are three words long
-        expect(Object.keys(insults).length).to.equal(3);
+    it('should have four properties', (done) => {
+        expect(Object.keys(insults).length).to.equal(4);
         done();
     });
 });

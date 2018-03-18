@@ -32,16 +32,18 @@ const processDiscordMessage = (discordMessage) => {
                 messageType = MessageTypes.Frick;
             } else if (messageContent.startsWith('fite me') && discordMessage.mentions.users.array().length == 1) {
                 messageType = MessageTypes.FiteMe;
-            } else if(messageContent.startsWith('insult')) {
+            } else if (messageContent.startsWith('insult')) {
                 messageType = MessageTypes.Insult;
-            } else if(messageContent.startsWith('brawl!') && (discordMessage.mentions.users.array().length > 0 || discordMessage.mentions.everyone)) {
+            } else if (messageContent.startsWith('brawl!') && (discordMessage.mentions.users.array().length > 0 || discordMessage.mentions.everyone)) {
                 messageType = MessageTypes.Brawl;
             } else if (messageContent.startsWith('hug')) {
                 messageType = MessageTypes.Hug;
-            } else if(messageContent.startsWith('mock')) {
+            } else if (messageContent.startsWith('mock')) {
                 messageType = MessageTypes.Mock;
-            } else if(messageContent.startsWith('hey bot') && messageContent.endsWith('?')) {
+            } else if (messageContent.startsWith('hey bot') && messageContent.endsWith('?')) {
                 messageType = MessageTypes.Question;
+            } else if (messageContent.startsWith('punch')) {
+                messageType = MessageTypes.Punch;
             }
         } catch (error) {
             // log all errors

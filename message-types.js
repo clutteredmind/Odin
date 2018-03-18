@@ -16,11 +16,7 @@ const insults = require('./insults');
 const answers = require('./answers').answers;
 
 const MessageTypes = {
-    None: {
-        respond: () => {
-            return undefined;
-        }
-    },
+    None: {},
     Ping: {
         respond: (channel) => {
             channel.send('pong');
@@ -72,7 +68,7 @@ const MessageTypes = {
         respond: (target, bully, channel) => {
             let firstWord = insults.first[Math.floor(Math.random() * insults.first.length)];
             let insultString = `Hey ${target}, ${bully} thinks `;
-            if(target == 'everyone') {
+            if (target == 'everyone') {
                 insultString += 'each of you is ';
             } else {
                 insultString += 'you\'re ';
@@ -101,7 +97,7 @@ const MessageTypes = {
             if (mentions.everyone) {
                 hugText += 'everyone';
             } else {
-                for(let user of mentions.users.array()) {
+                for (let user of mentions.users.array()) {
                     hugText += user.toString() + ' ';
                 }
             }
@@ -117,6 +113,31 @@ const MessageTypes = {
         respond: (channel) => {
             let answer = answers[Math.floor(Math.random() * answers.length)];
             channel.send(answer);
+        }
+    },
+    Punch: {
+        respond: (mentions, channel) => {
+            let punchFile = [];
+            let punchFilePath = path.join(__dirname, 'images/punches');
+            let punchFiles = fs.readdirSync(punchFilePath);
+            if (punchFiles != undefined && punchFiles.length > 0) {
+                punchFile.push(path.join(punchFilePath, punchFiles[Math.floor(Math.random() * punchFiles.length)]));
+            }
+
+            let punchText = 'Take that, ';
+            if (mentions.everyone) {
+                punchText += 'everyone';
+            } else {
+                for (let user of mentions.users.array()) {
+                    punchText += user.toString() + ' ';
+                }
+            }
+
+            punchText = punchText.trim() + '!';
+
+            channel.send(punchText, {
+                files: punchFile
+            });
         }
     },
     Help: {

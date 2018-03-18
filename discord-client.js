@@ -47,6 +47,7 @@ function makeBot() {
                     messageType.respond(message.author.username, message.mentions, message.channel);
                     break;
                 case MessageTypes.Hug:
+                case MessageTypes.Punch:
                     messageType.respond(message.mentions, message.channel);
                     break;
                 case MessageTypes.None:
