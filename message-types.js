@@ -31,7 +31,24 @@ const MessageTypes = {
     },
     Mock: {
         respond: (stringToMock, channel) => {
-            channel.send('abcdefghijklmnopqrstuvwxyz ' + stringToMock);
+            if (stringToMock.length > 0) {
+                request({
+                    method: 'POST',
+                    uri: 'http://localhost:3000/api/v1/mock',
+                    body: {
+                        topText: stringToMock
+                    },
+                    json: true
+                }, (error, response, body) => {
+                    if (!error) {
+                        let data = body.url.replace(/^data:image\/png;base64,/, "");
+                        let dataBuffer = new Buffer(data, 'base64');
+                        channel.send("", {
+                            files: [dataBuffer]
+                        });
+                    }
+                });
+            }
         }
     },
     Frick: {

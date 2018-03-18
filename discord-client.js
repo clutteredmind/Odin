@@ -37,7 +37,20 @@ function makeBot() {
                     messageType.respond(message.channel);
                     break;
                 case MessageTypes.Mock:
-                    messageType.respond(message.content.substring(5).trim(), message.channel);
+                    // get thelast two messages, because the most recent message will be the one that
+                    // triggered this event, and we want the one that came just before that
+                    message.channel.fetchMessages({
+                            limit: 2
+                        })
+                        .then(
+                            (messages) => {
+                                let stringToMock = message.content.substring(5).trim();
+                                if (stringToMock == 'that') {
+                                    stringToMock = messages.array()[1].content;
+                                }
+                                messageType.respond(stringToMock, message.channel);
+                            }
+                        );
                     break;
                 case MessageTypes.FiteMe:
                 case MessageTypes.Insult:
